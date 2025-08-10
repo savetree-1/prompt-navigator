@@ -1,0 +1,61 @@
+{
+  "manifest_version": 3,
+  "name": "Prompt Navigator",
+  "version": "1.0.0",
+  "description": "Navigate, manage, and optimize prompts across multiple AI platforms",
+  "author": "Prompt Navigator Team",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "contextMenus",
+    "notifications"
+  ],
+  "host_permissions": [
+    "*://chat.openai.com/*",
+    "*://claude.ai/*",
+    "*://bard.google.com/*",
+    "*://gemini.google.com/*",
+    "*://www.perplexity.ai/*",
+    "*://poe.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://chat.openai.com/*",
+        "*://claude.ai/*",
+        "*://bard.google.com/*",
+        "*://gemini.google.com/*",
+        "*://www.perplexity.ai/*",
+        "*://poe.com/*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Prompt Navigator",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["styles.css"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
